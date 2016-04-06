@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xmlns:context="http://www.springframework.org/schema/context"
+     xmlns:mvc="http://www.springframework.org/schema/mvc"
+     xmlns:websocket="http://www.springframework.org/schema/websocket"
+     xsi:schemaLocation="
+     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+     http://www.springframework.org/schema/websocket  http://www.springframework.org/schema/websocket/spring-websocket.xsd">
+     
+	<context:property-placeholder location="classpath:websocket.properties"/>
+	<context:annotation-config/>
+	
+	<!-- websocket -->
+	<!-- for tomcat -->
+	<!-- 
+	 <bean id="webSocketHandler" class="com.zxx.websocket.servlet.WebSocketHandler"/>
+	 <websocket:handlers>
+	 	<websocket:mapping handler="webSocketHandler" path="/firstWS"/>
+	 	<websocket:handshake-interceptors>
+	 		<bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
+	 		<bean class="com.zxx.websocket.servlet.WebSocketHandShake"/>
+	 	</websocket:handshake-interceptors>
+	 	<websocket:sockjs/>
+	 </websocket:handlers>
+	 
+	 <bean id="serverFactory" class="org.springframework.web.socket.server.standard.ServletServerContainerFactoryBean">
+	 	<property name="maxTextMessageBufferSize" value="4096"/>
+	 	<property name="maxBinaryMessageBufferSize" value="4096"/>
+	 </bean> 
+	 -->
+	 <!-- end for tomcat -->
+	 
+	 <!-- for jetty -->
+	 <!-- 
+	 <bean id="handshakeHandler" class="org.springframework.web.socket.server.support.DefaultHandshakeHandler">
+	 	<constructor-arg ref="upgradeStategy"/>
+	 </bean>
+	 <bean id="webSocketHandler" class="com.zxx.websocket.servlet.WebSocketHandler"/>
+	 <bean id="upgradeStategy" class="org.springframework.web.socket.server.jetty.JettyRequestUpgradeStrategy">
+	 	<constructor-arg ref="serverFactory"/>
+	 </bean>
+	 <bean id="serverFactory" class="org.eclipse.jetty.websocket.server.WebSocketServerFactory">
+	 	<constructor-arg>
+	 		<bean class="org.eclipse.jetty.websocket.api.WebSocketPolicy">
+	 			<constructor-arg value="SERVER"/>
+	 			<property name="inputBufferSize" value="4096"/>
+	 			<property name="idleTimeout" value="600000"/>
+	 		</bean>
+	 	</constructor-arg>
+	 </bean>
+	 <websocket:handlers allowed-origins="http://localhost">  设置接受的数据源
+	 <websocket:handlers >
+	 	<websocket:mapping handler="webSocketHandler" path="/firstWS"/>
+	 	<websocket:handshake-handler ref="handshakeHandler"/>
+	 	<websocket:sockjs/>
+	 	<websocket:handshake-interceptors>
+	 		<bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
+	 	</websocket:handshake-interceptors>
+	 </websocket:handlers>
+	  -->
+	 <!-- end for jetty -->
+	
+</beans>

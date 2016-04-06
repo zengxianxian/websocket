@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Class-Path: E:\\appdata\\mavendata\\org\\eclipse\\jetty\\jetty-websocket\\8.0.3.v20111011\\jetty-websocket-8.0.3.v20111011.jar
+
